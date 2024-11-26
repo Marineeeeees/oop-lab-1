@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.librarymanagementservice.LibraryController">
+    <AnchorPane fx:id="mainMenuPane" prefHeight="400" prefWidth="800" style="-fx-background-color: #f4f4f4;">
+        <VBox spacing="25" alignment="CENTER" layoutX="250" layoutY="100">
+            <Text text="Library" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <Button text="Add Book" onAction="#showAddBookScene" style="-fx-padding: 10; -fx-font-size: 16px;" />
+            <Button text="Find Books" onAction="#showFindBooksMenu" style="-fx-padding: 10; -fx-font-size: 16px;" />
+            <Button text="Update Book" onAction="#showUpdateBookScene" style="-fx-padding: 10; -fx-font-size: 16px;" />
+            <Button text="Delete Book" onAction="#showDeleteBookScene" style="-fx-padding: 10; -fx-font-size: 16px;" />
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="addBookPane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #eaf0f6;">
+        <VBox spacing="15" alignment="CENTER" layoutX="200" layoutY="80">
+            <Text text="Add a New Book" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <HBox spacing="15" alignment="CENTER">
+                <TextField fx:id="isbnField" promptText="ISBN" style="-fx-pref-width: 120;" />
+                <TextField fx:id="titleField" promptText="Title" style="-fx-pref-width: 150;" />
+                <TextField fx:id="authorNameField" promptText="Author" style="-fx-pref-width: 150;" />
+                <DatePicker fx:id="publicationDateField" promptText="Publication Date" style="-fx-pref-width: 150;" />
+            </HBox>
+            <HBox spacing="10">
+                <Button text="Add Book" onAction="#addBook" style="-fx-font-size: 14px;" />
+                <Button text="Back" onAction="#showMainMenu" style="-fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="findBooksMenuPane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #f8f9fc;">
+        <VBox spacing="20" alignment="CENTER" layoutX="250" layoutY="100">
+            <Text text="Find Books Menu" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Button text="By Author" onAction="#showFindBookByAuthorNameScene" style="-fx-padding: 10; -fx-font-size: 14px;" />
+            <Button text="By Year" onAction="#showFindBookByYearScene" style="-fx-padding: 10; -fx-font-size: 14px;" />
+            <Button text="By Title" onAction="#showFindBookByTitleScene" style="-fx-padding: 10; -fx-font-size: 14px;" />
+            <Button text="All Books" onAction="#showFindAllBooksScene" style="-fx-padding: 10; -fx-font-size: 14px;" />
+            <Button text="Back" onAction="#showMainMenu" style="-fx-padding: 10; -fx-font-size: 14px;" />
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="findBookByAuthorNamePane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #ffffff;">
+        <VBox spacing="15" alignment="CENTER" layoutX="100" layoutY="50">
+            <Text text="Search by Author" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <TextField fx:id="findAuthorNameField" promptText="Enter Author Name" style="-fx-pref-width: 300;" />
+            <TableView fx:id="booksByAuthorTableView" prefHeight="200" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="isbnColumnAuthor" text="ISBN" />
+                    <TableColumn fx:id="titleColumnAuthor" text="Title" />
+                    <TableColumn fx:id="authorColumnAuthor" text="Author" />
+                    <TableColumn fx:id="publicationDateColumnAuthor" text="Publication Date" />
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <Button text="Search" onAction="#findBooksByAuthorName" style="-fx-font-size: 14px;" />
+                <Button text="Back" onAction="#showMainMenu" style="-fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="findBookByYearPane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #ffffff;">
+        <VBox spacing="15" alignment="CENTER" layoutX="100" layoutY="50">
+            <Text text="Search by Year" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <TextField fx:id="findYearField" promptText="Enter Publication Year" style="-fx-pref-width: 300;" />
+            <TableView fx:id="booksByYearTableView" prefHeight="200" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="isbnColumnYear" text="ISBN" />
+                    <TableColumn fx:id="titleColumnYear" text="Title" />
+                    <TableColumn fx:id="authorColumnYear" text="Author" />
+                    <TableColumn fx:id="publicationDateColumnYear" text="Publication Date" />
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <Button text="Search" onAction="#findBooksByYear" style="-fx-font-size: 14px;" />
+                <Button text="Back" onAction="#showMainMenu" style="-fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="findBookByTitlePane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #ffffff;">
+        <VBox spacing="15" alignment="CENTER" layoutX="200" layoutY="50">
+            <Text text="Search by Title" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <TextField fx:id="findTitleField" promptText="Enter Book Title" style="-fx-pref-width: 300;" />
+            <HBox spacing="10">
+                <Button text="Search" onAction="#findBookByTitle" style="-fx-font-size: 14px;" />
+                <Button text="Back" onAction="#showMainMenu" style="-fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="findAllBooksPane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #f4f4f4;">
+        <VBox spacing="15" alignment="CENTER" layoutX="100" layoutY="50">
+            <Text text="All Books" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <TableView fx:id="booksTableView" prefHeight="250" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="isbnColumn" text="ISBN" />
+                    <TableColumn fx:id="titleColumn" text="Title" />
+                    <TableColumn fx:id="authorColumn" text="Author" />
+                    <TableColumn fx:id="publicationDateColumn" text="Publication Date" />
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <Button text="Refresh" onAction="#findAllBooks" style="-fx-font-size: 14px;" />
+                <Button text="Back" onAction="#showMainMenu" style="-fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="updateBookPane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #eaf0f6;">
+        <VBox spacing="15" alignment="CENTER" layoutX="200" layoutY="50">
+            <Text text="Update Book Details" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <HBox spacing="15" alignment="CENTER">
+                <TextField fx:id="updateISBNField" promptText="ISBN" style="-fx-pref-width: 120;" />
+                <TextField fx:id="updateTitleField" promptText="Title" style="-fx-pref-width: 150;" />
+                <TextField fx:id="updateAuthorNameField" promptText="Author Name" style="-fx-pref-width: 150;" />
+                <DatePicker fx:id="updatePublicationDateField" promptText="Publication Date" style="-fx-pref-width: 150;" />
+            </HBox>
+            <HBox spacing="10">
+                <Button text="Update" onAction="#updateBook" style="-fx-font-size: 14px;" />
+                <Button text="Back" onAction="#showMainMenu" style="-fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </AnchorPane>
+
+    <AnchorPane fx:id="deleteBookPane" prefHeight="400" prefWidth="800" visible="false" style="-fx-background-color: #f4f4f4;">
+        <VBox spacing="15" alignment="CENTER" layoutX="250" layoutY="100">
+            <Text text="Delete Book" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <TextField fx:id="deleteISBNField" promptText="Enter ISBN to Delete" style="-fx-pref-width: 300;" />
+            <HBox spacing="10">
+                <Button text="Delete" onAction="#deleteBook" style="-fx-font-size: 14px;" />
+                <Button text="Back" onAction="#showMainMenu" style="-fx-font-size: 14px;" />
+            </HBox>
+        </VBox>
+    </AnchorPane>
+</AnchorPane>
